@@ -1,0 +1,35 @@
+<div class="main">
+  <h1>My To Do List</h1>
+
+  <h3 class="mat-caption">Hello, I am Nurmukhammed! My github account is <a href="https://github.com/nuromirzak" target="_blank">nuromirzak</a></h3>
+  <mat-form-field class="input-full-width" style="width: 100%">
+    <mat-label>What would you like to do today?</mat-label>
+    <input
+      matInput
+      #newItem
+      placeholder="Add an item"
+      (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+      class="lg-text-input"
+      id="addItemInput"/>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="btn-primary" (click)="addItem(newItem.value); newItem.value = ''">Add</button>
+
+  <div class="btn-wrapper">
+    <mat-button-toggle-group style="width: 100%">
+      <mat-button-toggle class="btn-menu" value="all" (click)="filter = 'all'">All</mat-button-toggle>
+      <mat-button-toggle class="btn-menu" value="active" (click)="filter = 'active'">To Do</mat-button-toggle>
+      <mat-button-toggle class="btn-menu" value="done" (click)="filter = 'done'">Done</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <h2>{{items.length}} <span *ngIf="items.length === 1; else elseBlock">item</span>
+    <ng-template #elseBlock>items</ng-template>
+  </h2>
+
+  <mat-list style="max-height: 25vh; overflow: auto">
+    <mat-list-item *ngFor="let i of items" style="height: auto;">
+      <app-item (remove)="remove(i)" [item]="i"></app-item>
+    </mat-list-item>
+  </mat-list>
+</div>

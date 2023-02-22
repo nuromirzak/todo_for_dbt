@@ -1,0 +1,31 @@
+<mat-card class="item" style="border: none; box-shadow: none;">
+
+  <mat-checkbox
+    [id]="item.description"
+    (change)="checkItem()"
+    class="mat-checkbox"
+    [checked]="item.done"
+    fxFlex
+  >
+    <label [for]="item.description" class="mat-headline-6">{{item.description}}</label>
+  </mat-checkbox>
+
+  <div class="btn-wrapper" *ngIf="!editable">
+    <button mat-raised-button color="primary" (click)="editable = !editable">Edit</button>
+    <button mat-raised-button color="warn" (click)="remove.emit()">Delete</button>
+  </div>
+
+  <div *ngIf="editable">
+    <mat-form-field appearance="fill" class="input-full-width">
+      <mat-label>Edit item</mat-label>
+      <input matInput placeholder="edit item" [value]="item.description" #editedItem
+             (keyup.enter)="saveItem(editedItem.value)">
+    </mat-form-field>
+
+    <div class="btn-wrapper">
+      <button mat-raised-button color="primary" (click)="saveItem(editedItem.value)">Save</button>
+      <button mat-raised-button color="warn" (click)="editable = !editable">Cancel</button>
+    </div>
+  </div>
+
+</mat-card>

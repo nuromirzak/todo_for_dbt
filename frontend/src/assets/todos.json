@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "description": "Solve daily leetcode problem",
+    "done": false
+  },
+  {
+    "id": 2,
+    "description": "Read a book",
+    "done": false
+  },
+  {
+    "id": 3,
+    "description": "Walk the dog",
+    "done": false
+  },
+  {
+    "id": 4,
+    "description": "Do the \"Introducing to Computer Science\" homework",
+    "done": false
+  },
+  {
+    "id": 5,
+    "description": "Message Linear Algebra teacher about the homework",
+    "done": false
+  }
+]
